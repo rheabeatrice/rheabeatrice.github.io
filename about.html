@@ -164,4 +164,116 @@
     /* footer small */
     .contact-row { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
 
-    /* Responsive
+    /* Responsive */
+    @media (max-width: 980px){
+      .container{ grid-template-columns: 1fr; padding: 1rem; }
+      .photo-card{ flex-direction:row; text-align:left; gap:1rem; padding:0.75rem; align-items:center; }
+      .photo { width:110px; border-radius:10px; }
+      .name { font-size:1rem }
+    }
+
+    @media (max-width: 520px){
+      body{ padding:1rem; }
+      .container{ gap:1rem; padding:0.75rem }
+      .photo { width:92px }
+      .socials a{ width:32px; height:32px }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container" role="main" aria-labelledby="about-heading">
+
+    <!-- LEFT: photo card -->
+    <aside class="photo-card" aria-label="Host photo and quick info">
+      <!-- Replace rhea.jpg with your portrait file in the repo (recommended width ~1200px, example: assets/images/rhea.jpg) -->
+      <div class="photo" aria-hidden="false">
+        <img src="rhea.jpg" alt="Portrait of Rhea Trivedi">
+      </div>
+
+      <div style="padding:0.25rem 0; width:100%;">
+        <p class="name">Rhea Trivedi</p>
+        <p class="role">Host — Mind In Society</p>
+
+        <div class="socials" aria-label="Social links">
+          <!-- Replace hrefs with your actual profiles -->
+          <a href="https://twitter.com/yourhandle" title="Twitter" aria-label="Twitter">T</a>
+          <a href="https://instagram.com/yourhandle" title="Instagram" aria-label="Instagram">I</a>
+          <a href="https://linkedin.com/in/yourprofile" title="LinkedIn" aria-label="LinkedIn">in</a>
+          <a href="mailto:you@example.com" title="Email" aria-label="Email">✉</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT: main content -->
+    <section class="content" aria-labelledby="about-heading">
+      <h1 id="about-heading">About Rhea</h1>
+      <p class="lede">I host "Mind In Society" — a podcast exploring social cognition, how people think together, and the narratives that shape our public life. I bring research-backed curiosity, storytelling, and interviews with thinkers and practitioners.</p>
+
+      <div class="section" aria-labelledby="bio-heading">
+        <h2 id="bio-heading">Bio</h2>
+        <p>
+          Hi — I'm Rhea Trivedi. I'm a podcaster and writer interested in the intersection of psychology, culture, and everyday life. I study how we interpret the intentions of others, how beliefs spread, and how environments shape decision-making. My episodes blend conversations with researchers, short-form reflections, and listener questions.
+        </p>
+
+        <p class="muted">
+          Background: cognitive science & communications. Based in [Your City]. When I'm not recording, I enjoy reading, neighborhood walks, and coffee chats with guests.
+        </p>
+      </div>
+
+      <div class="section" aria-labelledby="pod-heading">
+        <h2 id="pod-heading">Podcast & recent episode</h2>
+
+        <div class="episode-preview" role="article" aria-label="Latest episode preview">
+          <div class="episode-meta">
+            <strong>Episode 001 — Why We Believe What We Do</strong>
+            <p class="muted">A short dive into how social cues shape belief formation.</p>
+            <p class="muted" style="margin-top:0.25rem;">Duration: 28:35 · Published: Dec 23, 2025</p>
+          </div>
+
+          <!-- Example audio embed. Replace src with real MP3 URL or host audio elsewhere. -->
+          <div>
+            <audio controls preload="none" style="max-width:260px; width:100%;">
+              <source src="https://example-hosting.com/audio/episode-001.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+            <p style="margin-top:0.5rem;"><a class="listen-btn" href="/podcast/episode-001-my-first-episode/">Listen & show notes</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" aria-labelledby="work-heading">
+        <h2 id="work-heading">Work & Projects</h2>
+        <p>In addition to the podcast, I maintain a blog where I expand on episode topics, publish short essays, and list resources for further reading. I also collaborate with researchers and community organizations on public engagement projects.</p>
+
+        <div class="timeline" aria-hidden="false">
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-body"><strong>2025</strong> — Launched "Mind In Society"; first season released.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-body"><strong>2023–2024</strong> — Research assistant and community workshops on cognitive bias.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-body"><strong>Ongoing</strong> — Writing short-form essays on social cognition.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact & Subscribe</h2>
+        <p>If you'd like to be a guest, suggest a topic, or collaborate, email me at <a href="mailto:you@example.com">you@example.com</a>.</p>
+
+        <div class="contact-row">
+          <a class="listen-btn" href="/podcast/">Subscribe to the podcast</a>
+          <a style="background:transparent; border:1px solid rgba(15,23,42,0.06); padding:0.6rem 0.9rem; border-radius:10px; text-decoration:none; color:var(--accent); font-weight:600;" href="/blog/">Read the blog</a>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top: 0.5rem;">Tip: Replace placeholder images, links, and text with your real content. For best results put your photo at <code>rhea.jpg</code> or update the <code>img src</code> path above.</p>
+    </section>
+  </main>
+</body>
+</html>
