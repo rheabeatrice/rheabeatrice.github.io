@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Rhea Trivedi · Mind In Society</title>
+  <meta name="description" content="About Rhea Trivedi — host of the Mind In Society podcast. Learn about Rhea's background, interests, and projects." />
+
+  <!-- Google font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fcfcfd;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#0f58d6;
+      --glass: rgba(255,255,255,0.6);
+      --radius:14px;
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin:0;
+      background: linear-gradient(180deg,#f7f8fb 0%, #ffffff 100%);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding: 2rem 1rem;
+    }
+
+    .container{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9));
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      padding: clamp(1rem, 3vw, 2.5rem);
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Left column: photo card */
+    .photo-card{
+      background: linear-gradient(180deg, rgba(15,88,214,0.03), rgba(15,88,214,0.01));
+      border-radius: 12px;
+      padding: 1rem;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.08);
+      border: 1px solid rgba(15,23,42,0.04);
+      background: #eee;
+    }
+
+    .photo img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin:0.2rem 0 0;
+      color: #071033;
+    }
+
+    .role {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .socials {
+      display:flex;
+      gap:0.5rem;
+      margin-top: 0.5rem;
+    }
+    .socials a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:36px;
+      height:36px;
+      border-radius:8px;
+      background: white;
+      border:1px solid rgba(15,23,42,0.04);
+      color: var(--accent);
+      text-decoration:none;
+      font-weight:600;
+      box-shadow: 0 4px 12px rgba(2,6,23,0.04);
+      transition: transform .14s ease, box-shadow .14s ease;
+    }
+    .socials a:hover{ transform: translateY(-3px); box-shadow: 0 8px 20px rgba(2,6,23,0.06); }
+
+    /* Right column: content */
+    .content h1{
+      margin:0 0 0.25rem 0;
+      font-size: clamp(1.4rem, 2.6vw, 2rem);
+    }
+    .lede{
+      color:var(--muted);
+      margin:0 0 1rem 0;
+      font-size: 1rem;
+    }
+
+    .section{
+      background: var(--card);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.03);
+      border:1px solid rgba(2,6,23,0.02);
+    }
+    .section h2{
+      margin:0 0 0.5rem 0;
+      font-size:1.05rem;
+    }
+    .section p{ margin:0 0 0.75rem 0; color:#0f172a; }
+    .muted { color:var(--muted); font-size:0.95rem; }
+
+    /* podcast preview and CTA */
+    .episode-preview{
+      display:flex;
+      gap:1rem;
+      align-items:center;
+    }
+    .episode-meta{
+      flex:1;
+    }
+    .listen-btn{
+      display:inline-block;
+      background:var(--accent);
+      color:white;
+      padding:0.6rem 0.9rem;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow: 0 6px 18px rgba(15,88,214,0.14);
+    }
+
+    /* timeline */
+    .timeline { display:flex; flex-direction:column; gap:0.5rem; padding-left: 0.5rem; }
+    .timeline-item { display:flex; gap:0.75rem; align-items:flex-start; }
+    .timeline-dot { width:10px; height:10px; background:var(--accent); border-radius:50%; margin-top:6px; flex:0 0 auto; }
+    .timeline-body { color:#0f172a; }
+
+    /* footer small */
+    .contact-row { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+
+    /* Responsive
