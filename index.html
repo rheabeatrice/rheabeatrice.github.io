@@ -11,13 +11,58 @@
 </head>
 <body>
   <h1>Mind in Society</h1>
-  <center>
-    <img src="logo.png">
-  </center>
-  <p> Hello and welcome to Mind In Society, a social cognition-based podcast that looks into the way we think, act, and interpret the world we share.  I am your host, Rhea Trivedi, and without further wait, let’s dive into today’s ideas.
-</p>
-  <!--
-  <p><a href="https://github.com/rheabeatrice">My GitHub</a></p>
-  -->
+
+<hr>
+
+<style>
+  .media-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .media-figure {
+    margin: 0;                 /* remove default figure margin */
+    flex: 0 0 auto;           /* fixed-size column for the image */
+  }
+
+  .media-figure img {
+    display: block;
+    width: 180px;             /* change to suit your logo size */
+    max-width: 30vw;
+    height: auto;
+  }
+
+  .media-text {
+    flex: 1 1 auto;           /* text takes remaining space */
+  }
+
+  /* Responsive: stack vertically on small screens */
+  @media (max-width: 600px) {
+    .media-row {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .media-text { text-align: center; }
+  }
+</style>
+
+<div class="media-row" role="group" aria-label="Intro with logo">
+  <figure class="media-figure">
+    <img src="logo.png" alt="Mind In Society logo">
+  </figure>
+
+  <div class="media-text">
+    <p>
+      Hello and welcome to Mind In Society, a social cognition-based podcast that looks into the way we think,
+      act, and interpret the world we share. I am your host, Rhea Trivedi, and without further wait,
+      let’s dive into today’s ideas.
+    </p>
+  </div>
+</div>
+
+<hr>
 </body>
 </html>
