@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mind in Society — Episodes</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="site-container">
+    <section class="episodes-section">
+      <h2>All episodes</h2>
+      <div id="episodes-list" class="episodes-list"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/site.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      site.init();
+      site.renderAllEpisodes('#episodes-list');
+    });
+  </script>
+</body>
+</html>
