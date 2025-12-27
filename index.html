@@ -3,66 +3,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mind in Society: Rhea Beatrice Trivedi</title>
-  <style>
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; text-align:center; padding:4rem; color:#222 }
-    a { color: #0366d6; text-decoration:none }
-  </style>
+  <title>Mind in Society — Home</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1>Mind in Society</h1>
+  <div id="site-header"></div>
 
-<hr>
+  <main class="site-container">
+    <section class="hero">
+      <img src="images/logo.png" alt="Mind in Society logo" class="hero-logo">
+      <h1 class="sr-only">Mind in Society</h1>
+    </section>
 
-<style>
-  .media-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem 0;
-  }
+    <section class="latest-episodes">
+      <h2>Latest episodes</h2>
+      <div id="latest-list" class="episode-grid"></div>
+      <p class="see-all"><a href="episodes.html">See all episodes →</a></p>
+    </section>
+  </main>
 
-  .media-figure {
-    margin: 0;                 /* remove default figure margin */
-    flex: 0 0 auto;           /* fixed-size column for the image */
-  }
+  <div id="site-footer"></div>
 
-  .media-figure img {
-    display: block;
-    width: 180px;             /* change to suit your logo size */
-    max-width: 30vw;
-    height: auto;
-  }
-
-  .media-text {
-    flex: 1 1 auto;           /* text takes remaining space */
-  }
-
-  /* Responsive: stack vertically on small screens */
-  @media (max-width: 600px) {
-    .media-row {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .media-text { text-align: center; }
-  }
-</style>
-
-<div class="media-row" role="group" aria-label="Intro with logo">
-  <figure class="media-figure">
-    <img src="logo.png" alt="Mind In Society logo">
-  </figure>
-
-  <div class="media-text">
-    <p>
-      Hello and welcome to Mind In Society, a social cognition-based podcast that looks into the way we think,
-      act, and interpret the world we share. I am your host, <a href="about.html">Rhea Trivedi</a>, and without further wait,
-      let’s dive into today’s ideas.
-    </p>
-  </div>
-</div>
-
-<hr>
+  <script src="js/site.js" defer></script>
+  <script>
+    // initialize page-specific rendering
+    document.addEventListener('DOMContentLoaded', () => {
+      site.init(); // load header/footer and common behaviors
+      site.renderLatestEpisodes('#latest-list', 3);
+    });
+  </script>
 </body>
 </html>
