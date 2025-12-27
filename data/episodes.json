@@ -1,0 +1,35 @@
+[
+  {
+    "id": "ep001",
+    "title": "How Context Shapes Thought",
+    "shortDescription": "A short conversation about how our surroundings affect decision making.",
+    "longDescription": "In this extended episode we speak with Dr. A about context-dependent reasoning, experiments, and implications for daily life. We discuss methodology and key findings, and end with listener questions.",
+    "image": "images/episode1.jpg",
+    "audio": "audio/episode1.mp3",
+    "guests": ["Dr. A. Researcher"],
+    "date": "2025-11-05",
+    "tags": ["social cognition","research"]
+  },
+  {
+    "id": "ep002",
+    "title": "Trends, Fashion, and Identity",
+    "shortDescription": "Why do trends feel so compelling? A look at fashion, status, and identity.",
+    "longDescription": "A deep dive into how trends relate to identity formation and social signaling. Featuring interviews and personal reflections.",
+    "image": "images/episode2.jpg",
+    "audio": "audio/episode2.mp3",
+    "guests": ["Sociologist B"],
+    "date": "2025-11-12",
+    "tags": ["culture","identity"]
+  },
+  {
+    "id": "ep003",
+    "title": "Everyday Cognitive Shortcuts",
+    "shortDescription": "Explaining mental shortcuts we all use and their everyday consequences.",
+    "longDescription": "We discuss heuristics, where they help, where they mislead, and how to be mindful of them in conversations and decisions.",
+    "image": "images/episode3.jpg",
+    "audio": "audio/episode3.mp3",
+    "guests": ["Dr. C"],
+    "date": "2025-11-19",
+    "tags": ["psychology"]
+  }
+]
