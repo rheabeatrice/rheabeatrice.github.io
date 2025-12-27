@@ -12,22 +12,11 @@
   },
   {
     "id": "ep002",
-    "title": "Trends, Fashion, and Identity",
-    "shortDescription": "Why do trends feel so compelling? A look at fashion, status, and identity.",
-    "longDescription": "A deep dive into how trends relate to identity formation and social signaling. Featuring interviews and personal reflections.",
-    "image": "images/episode2.jpg",
-    "audio": "audio/episode2.mp3",
-    "guests": ["Sociologist B"],
-    "date": "2025-11-12",
-    "tags": ["culture","identity"]
-  },
-  {
-    "id": "ep003",
     "title": "Everyday Cognitive Shortcuts",
     "shortDescription": "Explaining mental shortcuts we all use and their everyday consequences.",
     "longDescription": "We discuss heuristics, where they help, where they mislead, and how to be mindful of them in conversations and decisions.",
-    "image": "images/episode3.jpg",
-    "audio": "audio/episode3.mp3",
+    "image": "images/episode2.jpg",
+    "audio": "audio/episode2.mp3",
     "guests": ["Dr. C"],
     "date": "2025-11-19",
     "tags": ["psychology"]
