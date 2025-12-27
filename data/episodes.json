@@ -20,5 +20,16 @@
     "guests": ["Dr. C"],
     "date": "2025-11-19",
     "tags": ["psychology"]
+  },
+  {
+    "id": "ep003",
+    "title": "Everyday Mental Shortcuts",
+    "shortDescription": "Explaining mental shortcuts we all use and their everyday consequences.",
+    "longDescription": "We discuss heuristics, where they help, where they mislead, and how to be mindful of them in conversations and decisions.",
+    "image": "images/episode2.jpg",
+    "audio": "audio/episode2.mp3",
+    "guests": ["Dr. C", "Dr. D."],
+    "date": "2025-11-19",
+    "tags": ["psychology"]
   }
 ]
