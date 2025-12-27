@@ -1,279 +1,30 @@
+```html
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About — Rhea Trivedi · Mind In Society</title>
-  <meta name="description" content="About Rhea Trivedi — host of the Mind In Society podcast. Learn about Rhea's background, interests, and projects." />
-
-  <!-- Google font (optional) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#fcfcfd;
-      --card:#ffffff;
-      --muted:#6b7280;
-      --accent:#0f58d6;
-      --glass: rgba(255,255,255,0.6);
-      --radius:14px;
-      --max-width:1100px;
-    }
-    *{box-sizing:border-box}
-    body{
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      margin:0;
-      background: linear-gradient(180deg,#f7f8fb 0%, #ffffff 100%);
-      color:#0f172a;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      padding: 2rem 1rem;
-    }
-
-    .container{
-      max-width: var(--max-width);
-      margin: 0 auto;
-      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9));
-      border-radius: var(--radius);
-      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
-      padding: clamp(1rem, 3vw, 2.5rem);
-      display: grid;
-      grid-template-columns: 360px 1fr;
-      gap: 2rem;
-      align-items: start;
-    }
-
-    /* Left column: photo card */
-    .photo-card{
-      background: linear-gradient(180deg, rgba(15,88,214,0.03), rgba(15,88,214,0.01));
-      border-radius: 12px;
-      padding: 1rem;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      text-align:center;
-      gap: 0.75rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .photo {
-      width: 100%;
-      max-width: 320px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(15,23,42,0.08);
-      border: 1px solid rgba(15,23,42,0.04);
-      background: #eee;
-    }
-
-    .photo img{
-      display:block;
-      width:100%;
-      height:auto;
-    }
-
-    .name {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin:0.2rem 0 0;
-      color: #071033;
-    }
-
-    .role {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .socials {
-      display:flex;
-      gap:0.5rem;
-      margin-top: 0.5rem;
-    }
-    .socials a{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:36px;
-      height:36px;
-      border-radius:8px;
-      background: white;
-      border:1px solid rgba(15,23,42,0.04);
-      color: var(--accent);
-      text-decoration:none;
-      font-weight:600;
-      box-shadow: 0 4px 12px rgba(2,6,23,0.04);
-      transition: transform .14s ease, box-shadow .14s ease;
-    }
-    .socials a:hover{ transform: translateY(-3px); box-shadow: 0 8px 20px rgba(2,6,23,0.06); }
-
-    /* Right column: content */
-    .content h1{
-      margin:0 0 0.25rem 0;
-      font-size: clamp(1.4rem, 2.6vw, 2rem);
-    }
-    .lede{
-      color:var(--muted);
-      margin:0 0 1rem 0;
-      font-size: 1rem;
-    }
-
-    .section{
-      background: var(--card);
-      border-radius: 10px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 6px 18px rgba(2,6,23,0.03);
-      border:1px solid rgba(2,6,23,0.02);
-    }
-    .section h2{
-      margin:0 0 0.5rem 0;
-      font-size:1.05rem;
-    }
-    .section p{ margin:0 0 0.75rem 0; color:#0f172a; }
-    .muted { color:var(--muted); font-size:0.95rem; }
-
-    /* podcast preview and CTA */
-    .episode-preview{
-      display:flex;
-      gap:1rem;
-      align-items:center;
-    }
-    .episode-meta{
-      flex:1;
-    }
-    .listen-btn{
-      display:inline-block;
-      background:var(--accent);
-      color:white;
-      padding:0.6rem 0.9rem;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:600;
-      box-shadow: 0 6px 18px rgba(15,88,214,0.14);
-    }
-
-    /* timeline */
-    .timeline { display:flex; flex-direction:column; gap:0.5rem; padding-left: 0.5rem; }
-    .timeline-item { display:flex; gap:0.75rem; align-items:flex-start; }
-    .timeline-dot { width:10px; height:10px; background:var(--accent); border-radius:50%; margin-top:6px; flex:0 0 auto; }
-    .timeline-body { color:#0f172a; }
-
-    /* footer small */
-    .contact-row { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .container{ grid-template-columns: 1fr; padding: 1rem; }
-      .photo-card{ flex-direction:row; text-align:left; gap:1rem; padding:0.75rem; align-items:center; }
-      .photo { width:110px; border-radius:10px; }
-      .name { font-size:1rem }
-    }
-
-    @media (max-width: 520px){
-      body{ padding:1rem; }
-      .container{ gap:1rem; padding:0.75rem }
-      .photo { width:92px }
-      .socials a{ width:32px; height:32px }
-    }
-  </style>
+  <title>Mind in Society — About</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-  <main class="container" role="main" aria-labelledby="about-heading">
+  <div id="site-header"></div>
 
-    <!-- LEFT: photo card -->
-    <aside class="photo-card" aria-label="Host photo and quick info">
-      <!-- Replace rhea.jpg with your portrait file in the repo (recommended width ~1200px, example: assets/images/rhea.jpg) -->
-      <div class="photo" aria-hidden="false">
-        <img src="rhea.jpg" alt="Portrait of Rhea Trivedi">
-      </div>
-
-      <div style="padding:0.25rem 0; width:100%;">
-        <p class="name">Rhea Trivedi</p>
-        <p class="role">Host — Mind In Society</p>
-
-        <div class="socials" aria-label="Social links">
-          <!-- Replace hrefs with your actual profiles -->
-          <a href="https://twitter.com/yourhandle" title="Twitter" aria-label="Twitter">T</a>
-          <a href="https://instagram.com/yourhandle" title="Instagram" aria-label="Instagram">I</a>
-          <a href="https://linkedin.com/in/yourprofile" title="LinkedIn" aria-label="LinkedIn">in</a>
-          <a href="mailto:you@example.com" title="Email" aria-label="Email">✉</a>
+  <main class="site-container">
+    <section class="about">
+      <div class="about-grid">
+        <img src="images/rhea.jpg" alt="Rhea Trivedi" class="about-photo">
+        <div class="about-text">
+          <h1>Hi — I'm Rhea Trivedi.</h1>
+          <p>I'm a podcaster and writer interested in the intersection of psychology, culture, and everyday life. My episodes blend conversations with researchers, short-form reflections, and listener questions, and community.</p>
         </div>
       </div>
-    </aside>
-
-    <!-- RIGHT: main content -->
-    <section class="content" aria-labelledby="about-heading">
-      <h1 id="about-heading">About Rhea</h1>
-      <p class="lede">I host "Mind In Society" — a podcast exploring social cognition, how people think together, and the narratives that shape our public life. I bring research-backed curiosity, storytelling, and interviews with thinkers and practitioners.</p>
-
-      <div class="section" aria-labelledby="bio-heading">
-        <h2 id="bio-heading">Bio</h2>
-        <p>
-          Hi — I'm Rhea Trivedi. I'm a podcaster and writer interested in the intersection of psychology, culture, and everyday life. I study how we interpret the intentions of others, how beliefs spread, and how environments shape decision-making. My episodes blend conversations with researchers, short-form reflections, and listener questions.
-        </p>
-
-        <p class="muted">
-          Background: cognitive science & communications. Based in [Your City]. When I'm not recording, I enjoy reading, neighborhood walks, and coffee chats with guests.
-        </p>
-      </div>
-
-      <div class="section" aria-labelledby="pod-heading">
-        <h2 id="pod-heading">Podcast & recent episode</h2>
-
-        <div class="episode-preview" role="article" aria-label="Latest episode preview">
-          <div class="episode-meta">
-            <strong>Episode 001 — Why We Believe What We Do</strong>
-            <p class="muted">A short dive into how social cues shape belief formation.</p>
-            <p class="muted" style="margin-top:0.25rem;">Duration: 28:35 · Published: Dec 23, 2025</p>
-          </div>
-
-          <!-- Example audio embed. Replace src with real MP3 URL or host audio elsewhere. -->
-          <div>
-            <audio controls preload="none" style="max-width:260px; width:100%;">
-              <source src="https://example-hosting.com/audio/episode-001.mp3" type="audio/mpeg">
-              Your browser does not support the audio element.
-            </audio>
-            <p style="margin-top:0.5rem;"><a class="listen-btn" href="/podcast/episode-001-my-first-episode/">Listen & show notes</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="section" aria-labelledby="work-heading">
-        <h2 id="work-heading">Work & Projects</h2>
-        <p>In addition to the podcast, I maintain a blog where I expand on episode topics, publish short essays, and list resources for further reading. I also collaborate with researchers and community organizations on public engagement projects.</p>
-
-        <div class="timeline" aria-hidden="false">
-          <div class="timeline-item">
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-body"><strong>2025</strong> — Launched "Mind In Society"; first season released.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-body"><strong>2023–2024</strong> — Research assistant and community workshops on cognitive bias.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-body"><strong>Ongoing</strong> — Writing short-form essays on social cognition.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section" aria-labelledby="contact-heading">
-        <h2 id="contact-heading">Contact & Subscribe</h2>
-        <p>If you'd like to be a guest, suggest a topic, or collaborate, email me at <a href="mailto:you@example.com">you@example.com</a>.</p>
-
-        <div class="contact-row">
-          <a class="listen-btn" href="/podcast/">Subscribe to the podcast</a>
-          <a style="background:transparent; border:1px solid rgba(15,23,42,0.06); padding:0.6rem 0.9rem; border-radius:10px; text-decoration:none; color:var(--accent); font-weight:600;" href="/blog/">Read the blog</a>
-        </div>
-      </div>
-
-      <p class="muted" style="margin-top: 0.5rem;">Tip: Replace placeholder images, links, and text with your real content. For best results put your photo at <code>rhea.jpg</code> or update the <code>img src</code> path above.</p>
     </section>
   </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/site.js" defer></script>
+  <script>document.addEventListener('DOMContentLoaded', () => site.init());</script>
 </body>
 </html>
