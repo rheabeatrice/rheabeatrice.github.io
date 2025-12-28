@@ -230,3 +230,8 @@ body{
   .episode-grid{grid-template-columns:1fr}
   .episode-row{flex-direction:row}
 }
+.mind {
+  color: orange;
+  font-weight: bold;
+}
+    
