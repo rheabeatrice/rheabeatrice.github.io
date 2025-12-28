@@ -20,27 +20,5 @@
     "guests": ["Dr. C"],
     "date": "2025-11-19",
     "tags": ["psychology"]
-  },
-  {
-    "id": "ep003",
-    "title": "Everyday Mental Shortcuts",
-    "shortDescription": "Explaining mental shortcuts we all use and their everyday consequences.",
-    "longDescription": "We discuss heuristics, where they help, where they mislead, and how to be mindful of them in conversations and decisions.",
-    "image": "images/episode2.jpg",
-    "audio": "audio/episode2.mp3",
-    "guests": ["Dr. C", "Dr. D."],
-    "date": "2025-11-19",
-    "tags": ["psychology"]
-  },
-   {
-    "id": "ep004",
-    "title": "Stereotypes In The Mind",
-    "shortDescription": "How do stereotypes arise?",
-    "longDescription": "Whether it’s through the news, TV shows, books, or movies, we’ve all likely been exposed to some sort of stereotype before. Examples include racial stereotypes, gender stereotypes, age stereotypes, and so on. We all hold various stereotypes ourselves, too. But these stereotypes don’t just pop out of thin air, and we certainly aren't born with these preconceived thoughts. So, where do they come from? How do stereotypes arise? We’ll explore how stereotypes arise in this episode, ‘Stereotypes In The Mind’, through an interview with an expert: Tiffany Ito, a professor in the Department of Psychology and Neuroscience at the University of Colorado Boulder. Her research includes multi-level approaches to better understand stereotypes and prejudice. In the episode, you’ll learn about things like social learning, implicit and explicit stereotyping and fMRI and ERP.",
-    "image": "images/mind.jpg",
-    "audio": "audio/stereotypesbrain.mp3",
-    "guests": ["Tiffany Ito"],
-    "date": "2025-11-29",
-    "tags": ["psychology", "brain", "stereotypes"]
   }
 ]
