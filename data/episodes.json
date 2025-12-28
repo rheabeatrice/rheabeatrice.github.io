@@ -1,14 +1,14 @@
 [
   {
-    "id": "ep001",
-    "title": "Embarrassment, Unpacked",
-    "shortDescription": "Freud, 1st hand stories, and the Psychology of Embarrassment.",
-    "longDescription": "Ever tripped in front of a lot of people? Wore your shirt inside out the whole day? Spilled water all over your pants and had to go to work or school? Well, if you’ve experienced this or something similar, you’ve likely experienced embarrassment, a complex, self-conscious, and social emotion (one that exists in the presence of other people). I’ve found that it’s easy to explain what we are feeling when it’s a basic emotion like sadness, but with a complex one like embarrassment, it can be hard to even fully understand. When do the ‘embarrassing’ things we do become embarrassing? Why is that the case? Why do we get embarrassed by such small things? This episode of Mind In Society explores embarrassment through analysing the experiences of 13-17 year olds with embarrassment, diving into Sigmund Freud's Structural Model of the Psyche, and discussing how embarrassment is defined today. This episode aims to better your understanding of what is actually happening when we feel embarrassed, taking a trip through narrative and explanation. Listen to find out!",
-    "image": "images/embar.jpg",
-    "audio": "audio/episode1.mp3",
-    "guests": ["Featuring community: 13-17 year olds"],
-    "date": "2025-11-28",
-    "tags": ["social cognition","embarrassment", "Freud" ]
+    "id": "ep004",
+    "title": "Stereotypes In The Mind",
+    "shortDescription": "How do stereotypes arise?",
+    "longDescription": "Whether it’s through the news, TV shows, books, or movies, we’ve all likely been exposed to some sort of stereotype before. Examples include racial stereotypes, gender stereotypes, age stereotypes, and so on. We all hold various stereotypes ourselves, too. But these stereotypes don’t just pop out of thin air, and we certainly aren't born with these preconceived thoughts. So, where do they come from? How do stereotypes arise? We’ll explore how stereotypes arise in this episode, ‘Stereotypes In The Mind’, through an interview with an expert: Tiffany Ito, a professor in the Department of Psychology and Neuroscience at the University of Colorado Boulder. Her research includes multi-level approaches to better understand stereotypes and prejudice. In the episode, you’ll learn about things like social learning, implicit and explicit stereotyping and fMRI and ERP.",
+    "image": "images/mind.jpg",
+    "audio": "audio/stereotypesbrain.mp3",
+    "guests": ["Tiffany Ito"],
+    "date": "2025-11-29",
+    "tags": ["psychology", "brain", "stereotypes"]
   },
   {
     "id": "ep002",
@@ -32,15 +32,16 @@
     "date": "2025-11-19",
     "tags": ["psychology"]
   },
-   {
-    "id": "ep004",
-    "title": "Stereotypes In The Mind",
-    "shortDescription": "How do stereotypes arise?",
-    "longDescription": "Whether it’s through the news, TV shows, books, or movies, we’ve all likely been exposed to some sort of stereotype before. Examples include racial stereotypes, gender stereotypes, age stereotypes, and so on. We all hold various stereotypes ourselves, too. But these stereotypes don’t just pop out of thin air, and we certainly aren't born with these preconceived thoughts. So, where do they come from? How do stereotypes arise? We’ll explore how stereotypes arise in this episode, ‘Stereotypes In The Mind’, through an interview with an expert: Tiffany Ito, a professor in the Department of Psychology and Neuroscience at the University of Colorado Boulder. Her research includes multi-level approaches to better understand stereotypes and prejudice. In the episode, you’ll learn about things like social learning, implicit and explicit stereotyping and fMRI and ERP.",
-    "image": "images/mind.jpg",
-    "audio": "audio/stereotypesbrain.mp3",
-    "guests": ["Tiffany Ito"],
-    "date": "2025-11-29",
-    "tags": ["psychology", "brain", "stereotypes"]
+   
+  {
+    "id": "ep001",
+    "title": "Embarrassment, Unpacked",
+    "shortDescription": "Freud, 1st hand stories, and the Psychology of Embarrassment.",
+    "longDescription": "Ever tripped in front of a lot of people? Wore your shirt inside out the whole day? Spilled water all over your pants and had to go to work or school? Well, if you’ve experienced this or something similar, you’ve likely experienced embarrassment, a complex, self-conscious, and social emotion (one that exists in the presence of other people). I’ve found that it’s easy to explain what we are feeling when it’s a basic emotion like sadness, but with a complex one like embarrassment, it can be hard to even fully understand. When do the ‘embarrassing’ things we do become embarrassing? Why is that the case? Why do we get embarrassed by such small things? This episode of Mind In Society explores embarrassment through analysing the experiences of 13-17 year olds with embarrassment, diving into Sigmund Freud's Structural Model of the Psyche, and discussing how embarrassment is defined today. This episode aims to better your understanding of what is actually happening when we feel embarrassed, taking a trip through narrative and explanation. Listen to find out!",
+    "image": "images/embar.jpg",
+    "audio": "audio/episode1.mp3",
+    "guests": ["Featuring community: 13-17 year olds"],
+    "date": "2025-11-28",
+    "tags": ["social cognition","embarrassment", "Freud" ]
   }
 ]
