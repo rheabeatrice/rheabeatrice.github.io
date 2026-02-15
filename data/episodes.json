@@ -1,4 +1,37 @@
 [
+ {
+    "id": "ep006",
+    "title": "Trendy: Episode 1.",
+    "shortDescription": "Why we follow fashion trends: Gen-Z interviews, biological processes, social media and more. ",
+    "longDescription": "Fashion trends, more so in recent years, have become a major determinant of our closets, with influence from social media spanning thousands of screens within minutes. It’s clear that many follow fashion trends to an extent; it wouldn’t be a trend if no one did, but why? Why are people so drawn to fashion trends?
+
+Though following these trends can appear so thoughtless, it’s not. Many intricate themes exist when looking into why we follow these trends.
+
+This episode, “Trendy: part 1”, is the first episode in the two episode ‘Trendy’ mini series, where we look at the causes and effects of fashion trend following. 
+
+Join me in this episode as I look for an answer to what makes so many follow fashion trends: we’ll first hear from a couple of Gen Zers about their experience with these trends and reasons as to why they (and others) follow them, as this generation is the primary fashion trend follower (“Gen Z & Gen Alpha”; Shriber). Then, we’ll look into the themes they bring up in more depth, encompassing biological processes, social media and dopamine’s role.
+
+Make sure to listen to part 2 to understand the effects of fashion trends!",
+    "image": "images/fashion.jpg",
+    "audio": "audio/fashion.mp3",
+    "guests": ["With interviews with members of Gen-Z"],
+    "date": "2026-02-14",
+    "tags": ["psychology", "fashion", "trends", "Gen-z"]
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   {
     "id": "ep005",
     "title": "Stereotypes In The Mind",
