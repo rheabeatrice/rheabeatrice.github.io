@@ -67,7 +67,6 @@ body{
   background: rgba(251,250,247,.75);
   border-bottom:1px solid var(--border);
 }
-
 .header-wrap{
   max-width:var(--max-width);
   margin:0 auto;
@@ -75,7 +74,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:16px;
+  gap:28px; /* more breathing room between brand and nav */
 }
 
 .brand{
@@ -85,11 +84,77 @@ body{
 }
 
 .brand-link{
-  font-weight:800;
-  letter-spacing:.2px;
-  color:var(--accent);
+  font-weight: 900;           /* bolder */
+  font-size: 1.18rem;         /* slightly larger */
+  letter-spacing: .2px;
+  color: var(--accent);
   text-decoration:none;
-  font-size:1.1rem;
+  line-height:1;
+}
+
+.home-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  color: var(--muted);
+  background: rgba(255,255,255,.6);
+  text-decoration:none;
+  transition: color .15s ease, transform .12s ease, background .15s ease;
+}
+.home-icon:hover,
+.home-icon:focus{
+  color: var(--text);
+  background: rgba(255,255,255,.95);
+  transform: translateY(-1px);
+}
+
+/* Nav links + active subtle underline */
+.site-nav a{
+  position:relative;
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:800;
+  padding:8px 2px;
+  transition: color .15s ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus{
+  color: var(--text);
+}
+
+/* underline */
+.site-nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:2px;
+  width:100%;
+  height:2px;
+  border-radius:999px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .16s ease;
+  opacity:.85;
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus::after{
+  transform: scaleX(1);
+}
+
+/* active page */
+.site-nav a.is-active{
+  color: var(--text);
+}
+
+.site-nav a.is-active::after{
+  transform: scaleX(1);
 }
 
 .site-nav ul{
@@ -99,7 +164,7 @@ body{
   margin:0;
   padding:0;
 }
-
+/* 
 .site-nav a{
   color:var(--muted);
   text-decoration:none;
@@ -111,7 +176,7 @@ body{
 .site-nav a:focus{
   color:var(--text);
   transform:translateY(-1px);
-}
+} */
 
 /* mobile toggle */
 .nav-toggle{
