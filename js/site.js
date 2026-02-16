@@ -166,6 +166,151 @@ try{
     }
   }
 
+  function formatDate(iso){
+  // expects YYYY-MM-DD; falls back gracefully
+  try{
+    const d = new Date(iso + 'T00:00:00');
+    return d.toLocaleDateString(undefined, { year:'numeric', month:'short', day:'numeric' });
+  } catch(e){
+    return iso || '';
+  }
+}
+
+function createTagChips(tags){
+  const safe = Array.isArray(tags) ? tags : [];
+  if(!safe.length) return '';
+  return safe.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join(' ');
+}
+
+// richer list row (date + tags + guests)
+function createEpisodeRowRich(ep){
+  const guests = Array.isArray(ep.guests) ? ep.guests.join(', ') : '';
+  const dateStr = ep.date ? formatDate(ep.date) : '';
+  const tagsHtml = createTagChips(ep.tags);
+
+  const desc = ep.shortDescription || '';
+  return `
+    <article class="episode-row">
+      <a class="episode-link" href="episode.html?id=${encodeURIComponent(ep.id)}" aria-label="Open episode ${escapeHtml(ep.title)}">
+        <img src="${escapeAttr(ep.image)}" alt="${escapeAttr(ep.title)}">
+      </a>
+
+      <div class="row-right">
+        <div class="row-topline">
+          ${dateStr ? `<span class="episode-date">${escapeHtml(dateStr)}</span>` : ''}
+          ${guests ? `<span class="episode-guests">${escapeHtml(guests)}</span>` : ''}
+        </div>
+
+        <h3><a href="episode.html?id=${encodeURIComponent(ep.id)}">${escapeHtml(ep.title)}</a></h3>
+
+        <p>${escapeHtml(desc)}</p>
+
+        ${tagsHtml ? `<div class="episode-tags">${tagsHtml}</div>` : ''}
+
+        <div class="audio">
+          <audio controls preload="none" src="${escapeAttr(ep.audio)}"></audio>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function normalizeText(s){ return (s || '').toString().toLowerCase(); }
+
+function episodeMatches(ep, q, tag){
+  const query = normalizeText(q).trim();
+  const tagQ = normalizeText(tag).trim();
+
+  if(tagQ){
+    const tags = Array.isArray(ep.tags) ? ep.tags.map(normalizeText) : [];
+    if(!tags.includes(tagQ)) return false;
+  }
+
+  if(!query) return true;
+
+  const hay = [
+    ep.title,
+    ep.shortDescription,
+    ep.longDescription,
+    (ep.longDescriptionHtml || ''),
+    Array.isArray(ep.guests) ? ep.guests.join(' ') : '',
+    Array.isArray(ep.tags) ? ep.tags.join(' ') : ''
+  ].map(normalizeText).join(' ');
+
+  return hay.includes(query);
+}
+
+function sortEpisodes(data, mode){
+  const arr = data.slice();
+  if(mode === 'oldest'){
+    arr.sort((a,b) => (a.date||'').localeCompare(b.date||''));
+  } else if(mode === 'title'){
+    arr.sort((a,b) => (a.title||'').localeCompare(b.title||''));
+  } else {
+    // newest default
+    arr.sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  }
+  return arr;
+}
+
+// Enhanced renderer with search, tag filter, and sort
+async function renderAllEpisodesEnhanced(opts){
+  const {
+    listSelector,
+    searchSelector,
+    tagSelector,
+    sortSelector,
+    countSelector
+  } = opts || {};
+
+  try{
+    const dataRaw = await fetchJSON(dataUrl);
+
+    // unique tags
+    const tags = new Set();
+    dataRaw.forEach(ep => (ep.tags || []).forEach(t => tags.add(String(t))));
+    const tagList = Array.from(tags).sort((a,b)=>a.localeCompare(b));
+
+    const listEl = document.querySelector(listSelector);
+    const searchEl = document.querySelector(searchSelector);
+    const tagEl = document.querySelector(tagSelector);
+    const sortEl = document.querySelector(sortSelector);
+    const countEl = document.querySelector(countSelector);
+
+    if(tagEl){
+      tagEl.innerHTML = `<option value="">All tags</option>` +
+        tagList.map(t => `<option value="${escapeAttr(t)}">${escapeHtml(t)}</option>`).join('');
+    }
+
+    function render(){
+      const q = searchEl ? searchEl.value : '';
+      const tag = tagEl ? tagEl.value : '';
+      const sortMode = sortEl ? sortEl.value : 'newest';
+
+      const sorted = sortEpisodes(dataRaw, sortMode);
+      const filtered = sorted.filter(ep => episodeMatches(ep, q, tag));
+
+      if(listEl){
+        listEl.innerHTML = filtered.map(createEpisodeRowRich).join('');
+      }
+      if(countEl){
+        countEl.textContent = `${filtered.length} episode${filtered.length === 1 ? '' : 's'}`;
+      }
+    }
+
+    // wire events
+    if(searchEl) searchEl.addEventListener('input', render);
+    if(tagEl) tagEl.addEventListener('change', render);
+    if(sortEl) sortEl.addEventListener('change', render);
+
+    render();
+  } catch(err){
+    console.error(err);
+    const listEl = document.querySelector(opts.listSelector);
+    if(listEl) listEl.innerHTML = '<p>Could not load episodes.</p>';
+  }
+}
+
   // ----------------------------
   // Episode cards (index grid + list)
   // ----------------------------
@@ -300,9 +445,10 @@ try{
   }
 
   return {
-    init,
-    renderLatestEpisodes,
-    renderAllEpisodes,
-    renderEpisodeDetail
-  };
+  init,
+  renderLatestEpisodes,
+  renderAllEpisodes,
+  renderEpisodeDetail,
+  renderAllEpisodesEnhanced
+};
 })();
