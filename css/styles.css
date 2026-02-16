@@ -328,4 +328,23 @@ html,body{height:100%}
   color: #cf4d07;
   font-weight: bold;
 }
+.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background: var(--surface);
+  font-weight:800;
+  color: var(--text);
+  text-decoration:none;
+}
+.button.primary{
+  background: var(--accent);
+  border-color: transparent;
+  color: #fff;
+}
+.button.primary:hover{ filter: brightness(.96); }
+
     
