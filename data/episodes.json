@@ -1,24 +1,19 @@
 [
- {
-  "id": "ep006",
-  "title": "Trendy: Episode 1.",
-  "shortDescription": "Why we follow fashion trends: Gen-Z interviews, biological processes, social media, and more!",
-  "longDescriptionHtml": "<p>Fashion trends, more so in recent years, have become a major determinant of our closets...</p><p>Join me in this episode as I look for an answer...<br>Make sure to listen to part 2 to understand the effects of fashion trends!</p>",
-  "image": "images/fashion.jpg",
-  "audio": "audio/trends.mp3",
-  "guests": ["With interviews with members of Gen-Z"],
-  "date": "2026-02-14",
-  "tags": ["psychology", "fashion", "trends", "Gen-z"],
-  "references": [
-    {
-      "label": "Shriber, “Gen Z & Gen Alpha”.",
-      "url": "https://example.com"
-    },
-    {
-      "label": "Some other source (2024)."
-    }
-  ]
-} 
+  {
+    "id": "ep006",
+    "title": "Trendy: Episode 1.",
+    "shortDescription": "Why we follow fashion trends: Gen-Z interviews, biological processes, social media, and more!",
+    "longDescriptionHtml": "<p>Fashion trends, more so in recent years, have become a major determinant of our closets...</p><p>Join me in this episode as I look for an answer...<br>Make sure to listen to part 2 to understand the effects of fashion trends!</p>",
+    "image": "images/fashion.jpg",
+    "audio": "audio/trends.mp3",
+    "guests": ["With interviews with members of Gen-Z"],
+    "date": "2026-02-14",
+    "tags": ["psychology", "fashion", "trends", "Gen-z"],
+    "references": [
+      { "label": "Shriber, “Gen Z & Gen Alpha”.", "url": "https://example.com" },
+      { "label": "Some other source (2024)." }
+    ]
+  },
   {
     "id": "ep005",
     "title": "Stereotypes In The Mind",
@@ -30,7 +25,6 @@
     "date": "2025-11-27",
     "tags": ["psychology", "brain", "stereotypes"]
   },
-  
   {
     "id": "ep004",
     "title": "The Voices Of Our Community: Stereotyping. Episode 2.",
