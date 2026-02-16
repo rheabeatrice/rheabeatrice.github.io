@@ -32,15 +32,20 @@ body{
   margin:0;
   font-family:var(--font);
   color:var(--text);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
 
   background:
     radial-gradient(1200px 600px at 15% 0%, rgba(207,77,7,.10), transparent 60%),
     radial-gradient(900px 500px at 80% 10%, rgba(31,41,55,.06), transparent 60%),
     var(--bg);
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.6;
 }
+
 
 /* ============================================================
    Layout
