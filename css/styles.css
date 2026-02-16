@@ -316,11 +316,31 @@ html,body{height:100%}
 
 /* episode detail page */
 .episode-detail{
+  padding:22px;
+}
+.episode-detail h1{
+  margin:0 0 8px;
+  line-height:1.15;
+}
+.episode-detail img{
+  max-width:420px;
+  width:100%;
+  border-radius:12px;
+  border:1px solid var(--border);
+  margin:12px 0;
+}
+.episode-detail p{
+  max-width: 75ch;
+}
+
+/* 
+.episode-detail{
   background:var(--surface);
   padding:20px;
   border-radius:8px;
 }
-.episode-detail img{max-width:320px;width:100%;height:auto;border-radius:6px;margin-bottom:12px}
+.episode-detail img{max-width:320px;width:100%;height:auto;border-radius:6px;margin-bottom:12px} */
+
 .episode-detail .guests{font-weight:600;color:var(--muted);margin-bottom:8px}
 
 /* about/contact */
