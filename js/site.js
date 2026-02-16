@@ -134,15 +134,24 @@ const site = (function () {
       // wire nav toggle
       const toggle = document.getElementById('nav-toggle');
       const nav = document.getElementById('site-nav');
-      if(toggle && nav){
-        toggle.addEventListener('click', () => {
-          const expanded = toggle.getAttribute('aria-expanded') === 'true';
-          toggle.setAttribute('aria-expanded', String(!expanded));
-          nav.setAttribute('aria-hidden', String(expanded));
-        });
-        // ensure initial state
-        nav.setAttribute('aria-hidden', 'true');
-      }
+    if(toggle && nav){
+  toggle.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav.setAttribute('aria-hidden', String(expanded));
+  });
+
+  // Close menu when a nav link is clicked (mobile)
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.setAttribute('aria-hidden', 'true');
+    });
+  });
+
+  nav.setAttribute('aria-hidden', 'true');
+}
+
     } catch(err){
       console.error('Error injecting components', err);
     }
