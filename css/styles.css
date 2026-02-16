@@ -625,64 +625,69 @@ html,body{height:100%}
     grid-template-columns: repeat(3, 1fr);
   }
 }
+/* Latest episodes grid */
+.latest-episodes .episode-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
 
-/* Make latest cards consistent */
+@media (min-width:700px){
+  .latest-episodes .episode-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+/* Card layout */
 .latest-episodes .episode-card{
   display:flex;
   flex-direction:column;
-  gap:10px;
-  padding:14px;
-  background: var(--surface);
+  padding:16px;
+  background:var(--surface);
   border:1px solid #eee;
-  border-radius: var(--radius);
-  height: 420px;              /* <- all cards same height */
+  border-radius:var(--radius);
+  height:440px;              /* fixed card height */
 }
 
-/* Image at top, consistent size */
-.latest-episodes .episode-card .episode-link{
-  display:block;
-}
-
+/* Image */
 .latest-episodes .episode-card img{
   width:100%;
-  height: 190px;              /* <- fixed image height */
+  height:190px;
   object-fit:cover;
-  border-radius:12px;
-  display:block;
+  border-radius:10px;
+  margin-bottom:12px;
 }
 
-/* Audio directly below image, same width */
+/* Meta wrapper */
+.latest-episodes .episode-card .meta{
+  display:flex;
+  flex-direction:column;
+  flex:1;                    /* fills remaining space */
+}
+
+/* Title */
+.latest-episodes .episode-card h3{
+  margin:0 0 8px 0;
+  font-size:1.02rem;
+}
+
+/* Description grows */
+.latest-episodes .episode-card .meta p{
+  margin:0;
+  color:var(--muted);
+  flex:1;                    /* pushes audio down */
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:4;       /* clamp lines */
+  line-clamp:4;
+}
+
+/* Audio pinned to bottom */
 .latest-episodes .episode-card .audio{
-  width:100%;
+  margin-top:12px;
 }
 
 .latest-episodes .episode-card audio{
   width:100%;
-  display:block;
-}
-
-/* Text at bottom */
-.latest-episodes .episode-card .meta{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  flex:1;
-  min-height:0;
-}
-
-.latest-episodes .episode-card .meta h3{
-  margin:0;
-  font-size:1.02rem;
-  line-height:1.25;
-}
-
-/* Clamp short description to keep equal heights */
-.latest-episodes .episode-card .meta p{
-  margin:0;
-  color: var(--muted);
-  overflow:hidden;
-  display:-webkit-box;
-  -webkit-box-orient:vertical;
-  -webkit-line-clamp:4;       /* <- adjust 3–5 lines */
-  line-clamp:4;
 }
