@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mind in Society — Admin</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* admin-only styling (minimal) */
+    .admin-wrap{ max-width: 1000px; margin: 24px auto 60px; padding: 0 16px; }
+    .admin-card{
+      background: var(--surface, #fff);
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 18px;
+      margin: 16px 0;
+    }
+    .admin-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .admin-grid-1{ display:grid; grid-template-columns: 1fr; gap: 12px; }
+    label{ font-weight: 700; display:block; margin-bottom: 6px; }
+    input, textarea, select{
+      width:100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font: inherit;
+    }
+    textarea{ min-height: 120px; }
+    .hint{ color: var(--muted, #666); font-size: .92rem; margin-top: 6px; }
+    .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:999px; border:1px solid #ddd;
+      background:#fff; font-weight:800; cursor:pointer;
+      text-decoration:none; color: var(--text, #111);
+    }
+    .btn.primary{ background: var(--accent, #cf4d07); color:#fff; border-color: transparent; }
+    .btn.danger{ background:#fff; border-color:#f1b7b7; color:#8a1f1f; }
+    .btn:disabled{ opacity:.55; cursor:not-allowed; }
+    .status{ font-weight: 700; }
+    .status.ok{ color: #166534; }
+    .status.bad{ color: #9f1239; }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .preview{
+      border: 1px solid #eee; border-radius: 12px; padding: 14px; background:#fafafa;
+    }
+    .split{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 860px){
+      .admin-grid, .split{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-wrap">
+    <h1><span class="mind">Mind</span> in Society — Admin</h1>
+    <p class="hint">
+      This page helps you create a new episode entry safely and download an updated <span class="mono">data/episodes.json</span>.
+      No backend. No JSON commas to worry about.
+    </p>
+
+    <div class="admin-card">
+      <div class="row" style="justify-content:space-between;">
+        <div>
+          <div class="status" id="loadStatus">Loading episodes…</div>
+          <div class="hint" id="loadHint"></div>
+        </div>
+        <div class="row">
+          <button class="btn" id="reloadBtn" type="button">Reload episodes.json</button>
+          <button class="btn" id="exportBtn" type="button" disabled>Download episodes.json</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-card">
+      <h2>New episode</h2>
+
+      <div class="admin-grid">
+        <div>
+          <label for="title">Title</label>
+          <input id="title" type="text" placeholder="Trendy: Episode 1." />
+        </div>
+        <div>
+          <label for="date">Date (YYYY-MM-DD)</label>
+          <input id="date" type="date" />
+          <div class="hint">Used to sort episodes and generate the ID (you can edit the ID manually).</div>
+        </div>
+      </div>
+
+      <div class="admin-grid">
+        <div>
+          <label for="id">ID</label>
+          <input id="id" type="text" placeholder="ep007" />
+          <div class="hint">Suggested format: <span class="mono">ep007</span> (must be unique).</div>
+        </div>
+        <div>
+          <label for="guests">Guests (comma-separated)</label>
+          <input id="guests" type="text" placeholder="Featuring Dr. X, With interviews with..." />
+        </div>
+      </div>
+
+      <div class="admin-grid">
+        <div>
+          <label for="image">Image path</label>
+          <input id="image" type="text" placeholder="images/fashion.jpg" />
+        </div>
+        <div>
+          <label for="audio">Audio path</label>
+          <input id="audio" type="text" placeholder="audio/trends.mp3" />
+        </div>
+      </div>
+
+      <div class="admin-grid-1">
+        <div>
+          <label for="shortDescription">Short description</label>
+          <textarea id="shortDescription" placeholder="One sentence teaser…"></textarea>
+        </div>
+      </div>
+
+      <div class="admin-grid-1">
+        <div>
+          <label for="longDescriptionHtml">Long description (HTML allowed)</label>
+          <textarea id="longDescriptionHtml" class="mono"
+            placeholder="<p>Paragraph 1…</p><p>Paragraph 2…<br>Line break…</p>"></textarea>
+          <div class="hint">
+            Tip: Use <span class="mono">&lt;p&gt;</span> for paragraphs and <span class="mono">&lt;br&gt;</span> for line breaks.
+            For inline citations, use <span class="mono">&lt;a href='#ref-1'&gt;[1]&lt;/a&gt;</span> (single quotes).
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-grid">
+        <div>
+          <label for="tags">Tags (comma-separated)</label>
+          <input id="tags" type="text" placeholder="psychology, fashion, trends, Gen-z" />
+        </div>
+        <div>
+          <label for="refMode">References input</label>
+          <select id="refMode">
+            <option value="simple" selected>Simple (one per line: label | url optional)</option>
+            <option value="json">Raw JSON array (advanced)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="admin-grid-1">
+        <div>
+          <label for="references">References</label>
+          <textarea id="references" class="mono"
+            placeholder="Shriber, “Gen Z & Gen Alpha”. | https://example.com&#10;Some other source (2024)."></textarea>
+          <div class="hint">
+            Simple mode format: one reference per line. Optional URL after a pipe.
+            Example: <span class="mono">Title | https://…</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:12px;">
+        <button class="btn primary" id="buildBtn" type="button">Build episode + preview</button>
+        <button class="btn" id="copyBtn" type="button" disabled>Copy episode JSON</button>
+        <span class="status" id="formStatus"></span>
+      </div>
+    </div>
+
+    <div class="admin-card">
+      <h2>Preview</h2>
+      <div class="split">
+        <div>
+          <h3 class="hint" style="margin:0 0 8px;">Episode JSON (generated)</h3>
+          <pre id="jsonOut" class="preview mono" style="white-space:pre-wrap; word-break:break-word; min-height:220px;"></pre>
+        </div>
+        <div>
+          <h3 class="hint" style="margin:0 0 8px;">Rendered preview</h3>
+          <div id="htmlOut" class="preview" style="min-height:220px;"></div>
+        </div>
+      </div>
+      <p class="hint">
+        When happy, click <b>Download episodes.json</b> above and replace <span class="mono">data/episodes.json</span> in your site.
+      </p>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const dataUrl = 'data/episodes.json';
+
+  let episodes = [];
+  let builtEpisode = null;
+
+  const $ = (id) => document.getElementById(id);
+
+  function setStatus(el, text, ok){
+    el.textContent = text;
+    el.className = 'status ' + (ok ? 'ok' : 'bad');
+  }
+
+  function escapeHtml(s){
+    return (s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function normalizeCommaList(s){
+    return (s||'')
+      .split(',')
+      .map(x => x.trim())
+      .filter(Boolean);
+  }
+
+  function nextEpId(existing){
+    // Try to find max ep### and increment; fallback ep001
+    let max = 0;
+    for(const e of existing){
+      const m = String(e.id||'').match(/^ep(\d+)$/i);
+      if(m) max = Math.max(max, parseInt(m[1],10));
+    }
+    const n = max + 1;
+    return 'ep' + String(n).padStart(3,'0');
+  }
+
+  function parseReferencesSimple(text){
+    const lines = (text || '').split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+    return lines.map(line => {
+      const parts = line.split('|').map(p => p.trim());
+      const label = parts[0] || '';
+      const url = parts[1] || '';
+      const obj = { label };
+      if(url) obj.url = url;
+      return obj;
+    });
+  }
+
+  function parseReferences(mode, text){
+    if(!text.trim()) return [];
+    if(mode === 'json'){
+      const arr = JSON.parse(text);
+      if(!Array.isArray(arr)) throw new Error('References JSON must be an array');
+      // normalize objects
+      return arr.map(r => ({
+        label: String(r.label || ''),
+        ...(r.url ? { url: String(r.url) } : {})
+      })).filter(r => r.label);
+    }
+    return parseReferencesSimple(text);
+  }
+
+  function sortEpisodesByDateDesc(list){
+    const hasDates = list.some(e => e && e.date);
+    if(!hasDates) return list;
+    return [...list].sort((a,b)=> String(b.date||'').localeCompare(String(a.date||'')));
+  }
+
+  async function loadEpisodes(){
+    const loadStatus = $('loadStatus');
+    const loadHint = $('loadHint');
+    try{
+      setStatus(loadStatus, 'Loading episodes…', true);
+      loadHint.textContent = '';
+
+      const r = await fetch(dataUrl, { cache: 'no-store' });
+      if(!r.ok) throw new Error(`Fetch failed (${r.status}) for ${dataUrl}`);
+      const json = await r.json();
+      if(!Array.isArray(json)) throw new Error('episodes.json must be an array');
+
+      episodes = json;
+      setStatus(loadStatus, `Loaded ${episodes.length} episodes.`, true);
+      loadHint.textContent = `Source: ${dataUrl}`;
+
+      // prefill ID suggestion
+      if(!$('id').value) $('id').value = nextEpId(episodes);
+
+      $('exportBtn').disabled = true;   // enabled after build
+    } catch(err){
+      console.error(err);
+      setStatus(loadStatus, 'Could not load episodes.json', false);
+      loadHint.textContent = String(err);
+      episodes = [];
+    }
+  }
+
+  function buildEpisode(){
+    const formStatus = $('formStatus');
+    try{
+      // Basic required fields
+      const title = $('title').value.trim();
+      const date = $('date').value.trim();
+      const id = $('id').value.trim();
+
+      if(!title) throw new Error('Title is required');
+      if(!id) throw new Error('ID is required');
+      if(!/^[a-zA-Z0-9_-]+$/.test(id)) throw new Error('ID may only contain letters, numbers, _ or -');
+      if(episodes.some(e => String(e.id) === id)) throw new Error(`ID "${id}" already exists`);
+
+      const shortDescription = $('shortDescription').value.trim();
+      const longDescriptionHtml = $('longDescriptionHtml').value.trim();
+
+      const image = $('image').value.trim();
+      const audio = $('audio').value.trim();
+
+      if(!image) throw new Error('Image path is required (e.g., images/foo.jpg)');
+      if(!audio) throw new Error('Audio path is required (e.g., audio/foo.mp3)');
+
+      const guests = normalizeCommaList($('guests').value);
+      const tags = normalizeCommaList($('tags').value);
+
+      const refMode = $('refMode').value;
+      const references = parseReferences(refMode, $('references').value);
+
+      // If they didn't provide HTML, create a basic paragraph from plain text.
+      const longHtml = longDescriptionHtml
+        ? longDescriptionHtml
+        : (shortDescription ? `<p>${escapeHtml(shortDescription)}</p>` : '');
+
+      builtEpisode = {
+        id,
+        title,
+        shortDescription,
+        longDescriptionHtml: longHtml,
+        image,
+        audio,
+        guests,
+        date,
+        tags,
+        ...(references.length ? { references } : {})
+      };
+
+      // Show JSON
+      $('jsonOut').textContent = JSON.stringify(builtEpisode, null, 2);
+
+      // Render preview (simple)
+      const refs = (builtEpisode.references || []).map((r, i) => {
+        const label = escapeHtml(r.label);
+        const num = `[${i+1}]`;
+        if (r.url) {
+          return `<li id="ref-${i+1}"><span class="ref-num">${num}</span> <a href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer">${label}</a></li>`;
+        }
+        return `<li id="ref-${i+1}"><span class="ref-num">${num}</span> ${label}</li>`;
+      }).join('');
+
+      $('htmlOut').innerHTML = `
+        <div class="episode-detail">
+          <header class="episode-head">
+            <h2 style="margin:0 0 6px;">${escapeHtml(builtEpisode.title)}</h2>
+            <div class="episode-sub" style="color:var(--muted); font-weight:600;">
+              ${builtEpisode.date ? escapeHtml(builtEpisode.date) : ''}${builtEpisode.guests.length ? ' • ' + escapeHtml(builtEpisode.guests.join(', ')) : ''}
+            </div>
+            <div class="episode-tags" style="margin-top:10px;">
+              ${(builtEpisode.tags||[]).map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join(' ')}
+            </div>
+          </header>
+
+          <div class="episode-layout" style="margin-top:14px;">
+            <aside class="episode-media">
+              <img src="${escapeHtml(builtEpisode.image)}" alt="${escapeHtml(builtEpisode.title)}" style="max-width:100%; border-radius:12px;">
+              <audio class="episode-audio" controls preload="none" src="${escapeHtml(builtEpisode.audio)}" style="width:100%; margin-top:10px;"></audio>
+            </aside>
+            <article class="episode-body">
+              ${builtEpisode.longDescriptionHtml}
+              ${refs ? `
+                <section class="episode-refs">
+                  <h3 style="margin:18px 0 10px; font-size:.95rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted);">References</h3>
+                  <ol class="refs-list">${refs}</ol>
+                </section>` : ''
+              }
+            </article>
+          </div>
+        </div>
+      `;
+
+      setStatus(formStatus, 'Built successfully.', true);
+      $('copyBtn').disabled = false;
+      $('exportBtn').disabled = false;
+
+    } catch(err){
+      console.error(err);
+      builtEpisode = null;
+      $('jsonOut').textContent = '';
+      $('htmlOut').innerHTML = '';
+      setStatus(formStatus, String(err.message || err), false);
+      $('copyBtn').disabled = true;
+      $('exportBtn').disabled = true;
+    }
+  }
+
+  function download(filename, text){
+    const blob = new Blob([text], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function exportEpisodes(){
+    if(!builtEpisode){
+      alert('Build the episode first.');
+      return;
+    }
+    // Insert at top, then sort by date desc (so newest stays on top)
+    const updated = sortEpisodesByDateDesc([builtEpisode, ...episodes]);
+    download('episodes.json', JSON.stringify(updated, null, 2));
+  }
+
+  async function copyEpisodeJson(){
+    const text = $('jsonOut').textContent || '';
+    if(!text) return;
+    try{
+      await navigator.clipboard.writeText(text);
+      alert('Episode JSON copied to clipboard.');
+    }catch{
+      alert('Could not access clipboard. You can manually select/copy the JSON text.');
+    }
+  }
+
+  function autoSuggestId(){
+    // If ID is blank or looks auto-generated, keep it updated.
+    const current = $('id').value.trim();
+    if(!current || /^ep\d{3}$/i.test(current)){
+      $('id').value = nextEpId(episodes);
+    }
+  }
+
+  // Wire events
+  $('buildBtn').addEventListener('click', buildEpisode);
+  $('exportBtn').addEventListener('click', exportEpisodes);
+  $('copyBtn').addEventListener('click', copyEpisodeJson);
+  $('reloadBtn').addEventListener('click', loadEpisodes);
+
+  $('title').addEventListener('input', autoSuggestId);
+
+  // Load on startup
+  loadEpisodes();
+})();
+</script>
+
+</body>
+</html>
