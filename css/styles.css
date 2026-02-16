@@ -425,16 +425,18 @@ body{
 
 .latest-episodes .episode-card{
   padding:16px;
-  height:440px; /* fixed card height */
+  height: 520px; /* was 440px; bump because square image is taller */
 }
 
 .latest-episodes .episode-card img{
-  height:190px;
-  aspect-ratio:auto;
+  width:100%;
+  aspect-ratio: 1 / 1;   /* square */
+  height:auto;           /* let aspect ratio control height */
   object-fit:cover;
   border-radius:10px;
   margin-bottom:12px;
 }
+
 
 .latest-episodes .episode-card .meta{
   display:flex;
