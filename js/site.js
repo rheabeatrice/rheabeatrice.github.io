@@ -269,8 +269,9 @@ const site = (function () {
           </div>
         </div>
       `;
-    }catch(err){
-      console.error(err);
+    } catch(err){
+      console.error('renderEpisodeDetail failed:', err);
+      const target = document.querySelector(selector);
       if(target) target.innerHTML = '<p>Could not load episode.</p>';
     }
   }
