@@ -418,50 +418,70 @@ body{
 
 .refs-list a:hover{ color:var(--accent); }
 
-/* Latest episodes (homepage): fixed height + audio pinned */
+/* Latest Episodes Grid */
 .latest-episodes .episode-grid{
-  grid-template-columns: 1fr;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:18px;
 }
 
+/* Card */
 .latest-episodes .episode-card{
+  display:flex;
+  flex-direction:column;
   padding:16px;
-  height: 520px; /* was 440px; bump because square image is taller */
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  height:420px; /* consistent card size */
 }
 
+/* Smaller square image */
 .latest-episodes .episode-card img{
   width:100%;
-  aspect-ratio: 1 / 1;   /* square */
-  height:auto;           /* let aspect ratio control height */
+  aspect-ratio:1/1;
+  max-height:180px;        /* 👈 key change */
   object-fit:cover;
-  border-radius:10px;
+  border-radius:12px;
   margin-bottom:12px;
 }
 
-
+/* Content layout */
 .latest-episodes .episode-card .meta{
   display:flex;
   flex-direction:column;
   flex:1;
-  min-height:0;
 }
 
 .latest-episodes .episode-card h3{
-  margin:0 0 8px 0;
-  font-size:1.02rem;
+  margin:0 0 6px;
+  font-size:1rem;
 }
 
 .latest-episodes .episode-card .meta p{
   margin:0;
   color:var(--muted);
-  flex:1; /* pushes audio down */
+  flex:1;
   overflow:hidden;
   display:-webkit-box;
   -webkit-box-orient:vertical;
-  -webkit-line-clamp:4;
-  line-clamp:4;
+  -webkit-line-clamp:3;
 }
 
-.latest-episodes .episode-card .audio{ margin-top:12px; }
+/* Audio pinned bottom */
+.latest-episodes .episode-card .audio{
+  margin-top:12px;
+}
+
+.latest-episodes .episode-card audio{
+  width:100%;
+}
+@media (max-width: 820px){
+  .latest-episodes .episode-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* ============================================================
    About page
