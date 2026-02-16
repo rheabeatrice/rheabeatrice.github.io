@@ -9,14 +9,47 @@
   <link rel="icon" href="images/logo.png" sizes="192x192">
   <link rel="apple-touch-icon" href="images/logo.png">
   <link rel="icon" type="image/png" href="images/logo.png">
-  <link rel="icon" type="image/png" href="images/logo.png">
 </head>
 <body>
   <div id="site-header"></div>
 
   <main class="site-container">
+    <header class="page-hero">
+      <p class="kicker"><span class="mind">Episodes</span></p>
+      <h1>All episodes</h1>
+      <p class="lede">
+        Explore interviews, community stories, and mini-series episodes through the lens of social cognition.
+      </p>
+
+      <div class="episodes-controls" role="region" aria-label="Episode filters">
+        <div class="search-wrap">
+          <label class="sr-only" for="episode-search">Search episodes</label>
+          <input id="episode-search" class="input" type="search" placeholder="Search title, description, guests…" autocomplete="off">
+        </div>
+
+        <div class="select-wrap">
+          <label class="sr-only" for="tag-filter">Filter by tag</label>
+          <select id="tag-filter" class="select">
+            <option value="">All tags</option>
+          </select>
+        </div>
+
+        <div class="select-wrap">
+          <label class="sr-only" for="sort-order">Sort</label>
+          <select id="sort-order" class="select">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="title">Title A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="episodes-meta" aria-live="polite">
+        <span id="episodes-count"></span>
+      </div>
+    </header>
+
     <section class="episodes-section">
-      <h2>All episodes</h2>
       <div id="episodes-list" class="episodes-list"></div>
     </section>
   </main>
@@ -27,7 +60,13 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       site.init();
-      site.renderAllEpisodes('#episodes-list');
+      site.renderAllEpisodesEnhanced({
+        listSelector: '#episodes-list',
+        searchSelector: '#episode-search',
+        tagSelector: '#tag-filter',
+        sortSelector: '#sort-order',
+        countSelector: '#episodes-count'
+      });
     });
   </script>
 </body>
