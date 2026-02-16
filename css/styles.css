@@ -31,9 +31,10 @@ body{
 *{box-sizing:border-box}
 html,body{height:100%}
 /* centered main with blank bars to left/right */
+
 .site-container{
   max-width:var(--max-width);
-  margin:32px auto;
+  margin:28px auto 56px;
   padding:0 20px;
 }
 
