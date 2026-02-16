@@ -125,6 +125,15 @@ const site = (function () {
         fetch('components/footer.html').then(r => r.text())
       ]);
       if (headerTarget) headerTarget.innerHTML = headerHtml;
+      // highlight active nav link
+try{
+  const path = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('#site-nav a').forEach(a => {
+    const href = (a.getAttribute('href') || '').split('/').pop();
+    if(href === path) a.classList.add('is-active');
+  });
+} catch(e){}
+
       if (footerTarget) footerTarget.innerHTML = footerHtml;
 
       // set footer year
