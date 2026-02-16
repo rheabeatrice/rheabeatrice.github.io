@@ -502,4 +502,95 @@ html,body{height:100%}
   .hero-copy p{ margin-left:auto; margin-right:auto; }
 }
 
+/* Episode detail: media left, text right */
+.episode-detail{
+  background: var(--surface);
+  padding: 22px;
+  border-radius: var(--radius);
+  border: 1px solid #eee;
+}
+
+.episode-head h1{ margin: 0 0 8px; line-height: 1.15; }
+.episode-sub{ display:flex; gap:12px; flex-wrap:wrap; color: var(--muted); font-weight:600; }
+.episode-tags{ margin-top:10px; }
+
+.tag{
+  display:inline-flex;
+  padding:4px 10px;
+  border-radius:999px;
+  border:1px solid #eee;
+  background: rgba(207,77,7,.06);
+  color: var(--accent-dark);
+  font-weight:800;
+  font-size:.8rem;
+  margin-right:6px;
+}
+
+/* Key layout */
+.episode-layout{
+  display:grid;
+  grid-template-columns: 340px 1fr;
+  gap: 22px;
+  align-items:start;
+  margin-top: 16px;
+}
+
+.episode-media img{
+  width:100%;
+  height:auto;
+  border-radius: 12px;
+  display:block;
+  object-fit: cover;
+}
+
+.episode-audio{
+  width:100%;
+  margin-top:10px;
+  display:block;
+}
+
+/* Rich text styling for longDescriptionHtml */
+.episode-body p{ margin: 0 0 12px; }
+.episode-body ul, .episode-body ol{ margin: 0 0 12px 20px; }
+.episode-body a{ color: var(--accent); font-weight:700; }
+.episode-body blockquote{
+  margin: 12px 0;
+  padding: 10px 12px;
+  border-left: 4px solid rgba(207,77,7,.35);
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+/* References */
+.episode-refs{
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #eee;
+}
+.episode-refs h2{
+  font-size: 1rem;
+  margin: 0 0 10px;
+}
+.refs-list{
+  margin:0;
+  padding-left: 0;
+  list-style: none;
+}
+.refs-list li{
+  margin: 8px 0;
+  color: var(--muted);
+}
+.ref-num{
+  display:inline-block;
+  width: 42px;
+  color: var(--text);
+  font-weight:800;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 820px){
+  .episode-layout{
+    grid-template-columns: 1fr;
+  }
+}
     
