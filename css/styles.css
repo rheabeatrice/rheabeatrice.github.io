@@ -91,25 +91,35 @@ body{
   text-decoration:none;
   line-height:1;
 }
-
+/* Home icon — desktop only */
 .home-icon{
-  display:inline-flex;
+  display:none; /* hidden by default (mobile) */
+
   align-items:center;
   justify-content:center;
   width:34px;
   height:34px;
   border-radius:999px;
+
   border:1px solid var(--border);
-  color: var(--muted);
+  color: var(--accent); /* match brand color */
   background: rgba(255,255,255,.6);
+
   text-decoration:none;
   transition: color .15s ease, transform .12s ease, background .15s ease;
 }
+
 .home-icon:hover,
 .home-icon:focus{
-  color: var(--text);
-  background: rgba(255,255,255,.95);
+  background: rgba(207,77,7,.08);
   transform: translateY(-1px);
+}
+
+/* Show only on desktop */
+@media (min-width: 820px){
+  .home-icon{
+    display:inline-flex;
+  }
 }
 
 /* Nav links + active subtle underline */
