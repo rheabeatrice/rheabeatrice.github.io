@@ -1,6 +1,3 @@
-function parseDescription(description) {
-    return description.split('\n').map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('');
-}
 // Basic site script to inject header/footer, render episodes from data/episodes.json,
 // and handle mobile nav. Minimal dependency: none.
 const site = (function () {
@@ -116,7 +113,6 @@ const site = (function () {
         <p>${escapeHtml(ep.longDescription)}</p>
         <div class="audio"><audio controls preload="none" src="${escapeAttr(ep.audio)}"></audio></div>
       `;
-        const longDescription = parseDescription(episode.longDescription);
     }catch(err){ console.error(err); document.querySelector(selector).innerHTML = '<p>Could not load episode.</p>'; }
   }
 
