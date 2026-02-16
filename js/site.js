@@ -99,9 +99,9 @@ const site = (function () {
       const label = escapeHtml(r.label || '');
       if (r.url) {
         const url = escapeAttr(r.url);
-        return `<li><span class="ref-num">[${i+1}]</span> <a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a></li>`;
+        return `<li id="ref-${i+1}"><span class="ref-num">[${i+1}]</span> <a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a></li>`;
       }
-      return `<li><span class="ref-num">[${i+1}]</span> ${label}</li>`;
+      return `<li id="ref-${i+1}"><span class="ref-num">[${i+1}]</span> ${label}</li>`;
     }).join('');
 
     return `
