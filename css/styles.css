@@ -201,6 +201,50 @@ html,body{height:100%}
   gap:18px;
 }
 
+.episode-card,
+.episodes-list .episode-row,
+.episode-detail,
+.contact-card{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 26px rgba(17,24,39,.06);
+}
+
+.episode-card{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding:14px;
+}
+
+.episode-card img{
+  width:100%;
+  aspect-ratio: 1 / 1;
+  height:auto;
+  object-fit:cover;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.episode-card .meta h3{
+  margin:4px 0 6px;
+  font-size:1.05rem;
+  line-height:1.25;
+}
+.episode-card .meta p{
+  margin:0 0 10px;
+  color:var(--muted);
+}
+
+.episode-card audio{
+  width:100%;
+}
+
+@media (min-width:700px){
+  .episode-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+/* 
 .episode-card{
   display:flex;
   gap:14px;
@@ -231,7 +275,7 @@ html,body{height:100%}
 }
 .episode-card .meta .audio{
   margin-top:6px;
-}
+} */
 
 /* episodes list (full page) */
 .episodes-list .episode-row{
