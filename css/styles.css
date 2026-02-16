@@ -902,6 +902,7 @@ html,body{height:100%}
   height: 150px;
   object-fit: cover;
   display:block;
+  object-position: center 70%;  /* move image down */
 }
 
 /* CTA pinned to bottom */
