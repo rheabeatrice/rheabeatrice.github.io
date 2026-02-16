@@ -613,15 +613,3 @@ html,body{height:100%}
     grid-template-columns: 1fr;
   }
 }
-.episode-layout{
-  display:grid;
-  grid-template-columns: 360px 1fr;
-  gap:32px; /* slightly larger */
-}
-
-.episode-body{
-  font-size:1.05rem;
-  line-height:1.7;
-}
-
-    
