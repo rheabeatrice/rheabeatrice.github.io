@@ -73,7 +73,7 @@
     "audio": "audio/episode1.mp3",
     "guests": ["Featuring community: 13-17 year olds"],
     "date": "2025-11-22",
-    "tags": ["social cognition","embarrassment", "Freud" ]
+    "tags": ["social cognition","embarrassment", "Freud" ],
     "references": [
       { "label": "“Exploring Freudian Psychodynamics: Id, Ego, and Superego • Psychology Town.” Psychology Town, 8 June 2024.", "url": "https://psychology.town/counselling-interventions/exploring-freudian-psychodynamics-id-ego-superego/" },
       { "label": "McLeod, Saul. “Freud’s Theory of Personality: Id, Ego, and Superego.” Simply Psychology, 2025.", "url": "https://www.simplypsychology.org/psyche.html" },
