@@ -335,7 +335,7 @@ async function renderAllEpisodesEnhanced(opts){
   }
 
   // Sort newest first (by ISO date) if present, otherwise keep original order.
-  function sortEpisodes(data){
+  function sortEpisodesNewest(data){
     if(!Array.isArray(data)) return [];
     const hasDates = data.some(e => e && e.date);
     if(!hasDates) return data;
@@ -345,7 +345,7 @@ async function renderAllEpisodesEnhanced(opts){
   async function renderLatestEpisodes(selector, n=3){
     try{
       const dataRaw = await fetchJSON(dataUrl);
-      const data = sortEpisodes(dataRaw);
+      const data = sortEpisodesNewest(dataRaw);
       const list = document.querySelector(selector);
       if(!list) return;
 
@@ -361,7 +361,7 @@ async function renderAllEpisodesEnhanced(opts){
     const list = document.querySelector(selector);
     try{
       const dataRaw = await fetchJSON(dataUrl);
-      const data = sortEpisodes(dataRaw);
+      const data = sortEpisodesNewest(dataRaw);
       if(!list) return;
 
       list.innerHTML = '';
